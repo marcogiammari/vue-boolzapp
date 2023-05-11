@@ -52,7 +52,7 @@
                     <section id="left-searchbar">
                         <div class="bg-white px-2 py-1 d-flex align-items-center">
                           <i class="fa-solid fa-magnifying-glass mx-4"></i>
-                          <span>Cerca o inizia una nuova chat</span>
+                          <input placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </section>
                     <section id="left-contacts" class="overflow-y-auto bg-white">
@@ -67,7 +67,7 @@
                                     <small>{{contact.messages[contact.messages.length-1].message}}</small>
                                 </div>
                                 <div class="col-1">
-                                    <small>12:00</small>
+                                    <small>{{contact.messages[contact.messages.length-1].date.slice(10,16)}}</small>
                                 </div>
                             </div>
                             
@@ -99,7 +99,7 @@
                             <i class="fa-regular fa-face-smile fs-3 mx-5"></i>
                         </div>
                         <div id="message-bar" class="d-flex align-items-center bg-white w-100 rounded-2 px-3 my-2">
-                            Scrivi un messaggio
+                           <input type="text" placeholder="Scrivi un messaggio"> 
                         </div>
                         <div class="d-flex align-items-center">
                             <i class="fa-solid fa-microphone fs-3 mx-5"></i>

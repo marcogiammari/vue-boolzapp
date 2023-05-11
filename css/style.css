@@ -92,7 +92,10 @@ div, section {
     color: #b1b1b1;
 }
 
-#left-searchbar span {
+#left-searchbar input,
+#message-bar input {
+    width: 100%;
+    border: none;
     color: gray;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -134,6 +137,4 @@ div, section {
 
 #message-bar {
     height: auto;
-    color: gray;
-    font-family: Arial, Helvetica, sans-serif;
 }
