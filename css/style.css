@@ -1,9 +1,5 @@
 /* DEBUG */
 
-div, section {
-    /* border: 1px solid yellow !important; */
-    height: 100%;
-}
 
 /* RESET */
 
@@ -13,21 +9,32 @@ div, section {
     box-sizing: border-box;
 }
 
+/* GENERAL */
+
 :root {
-    --gray: #eaeaea;
+    --gray: #f3eeea;
     --lightblue: #8edafc;
+    --lightgreen: #d5f9ba;
+    --h70: 70px;
 }
 
 img {
     max-width: 100%;
     max-height: 100%;
 }
-/* body */
+
+div, section {
+    height: 100%;
+}
 
 #my-body {
     background: no-repeat linear-gradient(#009688 20%, #d2dbdb 20% 80%);
     height: 100vh;
-    padding: 1.5rem 12rem;
+}
+
+#my-container {
+    margin: 1.5rem 12rem;
+    max-height: 90%;
 }
 
 /* <-- left-container --> */
@@ -36,15 +43,17 @@ img {
     width: 35%;
 }
 
-#left-cont #left-user {
-    height: 70px;
+#left-cont #left-user,
+#right-cont #right-user {
+    height: var(--h70);
     background-color: var(--gray);
     font-weight: 600;
 }
 
-#left-user i {
+#left-user i,
+#right-user i {
     color: #b1b1b1;
-    margin: .25rem;
+    margin: .5rem;
     font-size: large;
 }
 
@@ -57,10 +66,10 @@ img {
     color: var(--lightblue);
     background-color: #fff;
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     width: 1rem;
     height: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     margin: .5rem 0 .5rem 1rem;
 }
 
@@ -86,7 +95,6 @@ img {
 #left-searchbar span {
     color: gray;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: .75rem;
 }
 
 #left-contacts > div {
@@ -102,4 +110,30 @@ img {
 
 #right-cont {
     width: 65%;
+    border-left: 1px solid #d2dbdb;
+}
+
+#right-chat {
+    background-image: url(../img/mine.jpg);
+    background-size: contain;
+}
+
+#chat-wrapper > div {
+    width: 20rem;
+    height: 4.5rem;
+}
+
+.my-bg-green {
+    background-color: var(--lightgreen);
+}
+
+#right-message {
+    height: var(--h70);
+    background-color: var(--gray);
+}
+
+#message-bar {
+    height: auto;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
 }

@@ -24,19 +24,20 @@
         <!-- vue -->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
-    <body id="my-body">
+    <body id="my-body" class="vh-100">
         <div id="app" class="">
 
-            <div class="my-container d-flex">
+            <div id="my-container" class="d-flex">
                 <div id="left-cont" class="d-flex flex-column">
-                    <section id="left-user" class="d-flex justify-content-between align-items-center p-1">
+                    <section id="left-user" class="d-flex justify-content-between align-items-center p-2">
                         <div class="d-flex align-items-center">
-                            <img class="rounded-5" src="img/avatar_1.jpg" alt=""> Sofia 
+                            <img class="rounded-5" src="img/avatar_io.jpg" alt="">
+                            <span class="px-1">Sofia</span> 
                         </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-circle-notch"></i> 
-                            <i class="fa-solid fa-message"></i> 
-                            <i class="fa-solid fa-ellipsis-vertical"></i> 
+                        <div class="d-flex align-items-center me-3">
+                            <i class="fa-solid fa-circle-notch fs-3"></i> 
+                            <i class="fa-solid fa-message fs-3"></i> 
+                            <i class="fa-solid fa-ellipsis-vertical fs-3"></i> 
                         </div>
                     </section>
                     <section id="left-notifications" class="d-flex gap-2">
@@ -74,8 +75,36 @@
                     </section>
 
                 </div>
-                <div id="right-cont" class="bg-light-subtle">
-
+                <div id="right-cont" class="d-flex flex-column justify-content-between bg-light-subtle">
+                    <section id="right-user" class="d-flex justify-content-between align-items-center p-2">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-5" src="img/avatar_1.jpg" alt="">
+                            <span class="px-1">Michele</span> 
+                        </div>
+                        <div class="d-flex align-items-center me-3">
+                            <i class="fa-solid fa-magnifying-glass fs-3"></i>
+                            <i class="fa-solid fa-paperclip fs-3"></i> 
+                            <i class="fa-solid fa-ellipsis-vertical fs-3"></i> 
+                        </div>
+                    </section>
+                    <section id="right-chat" class="py-2 px-4">
+                        <div id="chat-wrapper" class="d-flex flex-column gap-3 my-5 mx-5">
+                            <div class="d-flex align-items-center rounded-4 align-self-end my-bg-green px-4">Hai portato a spasso il cane?</div>
+                            <div class="d-flex align-items-center rounded-4 align-self-end my-bg-green px-4">Hai portato a spasso il cane?</div>
+                            <div class="d-flex align-items-center rounded-4 bg-white px-4">Hai portato a spasso il cane?</div>
+                        </div>
+                    </section>
+                    <section id="right-message" class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <i class="fa-regular fa-face-smile fs-3 mx-5"></i>
+                        </div>
+                        <div id="message-bar" class="d-flex align-items-center bg-white w-100 rounded-2 px-3 my-2">
+                            Scrivi un messaggio
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-microphone fs-3 mx-5"></i>
+                        </div>
+                    </section>
                 </div>
 
                 
