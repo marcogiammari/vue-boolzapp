@@ -63,7 +63,7 @@
                                 
                                 <div class="col-9 p-2 d-flex flex-column">
                                     {{contact.name}}
-                                    <small>Ultimo messaggio inviato</small>
+                                    <small>{{contact.messages[contact.messages.length-1].message}}</small>
                                 </div>
                                 <div class="col-1">
                                     <small>12:00</small>
