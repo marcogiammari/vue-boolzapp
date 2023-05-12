@@ -56,8 +56,8 @@
                         </div>
                     </section>
                     <section id="left-contacts" class="overflow-y-auto bg-white">
-                        <div v-for="(contact, i) in contacts.filter(x => x.visible == true)" class="d-flex flex-column">
-                            <div @click="currentChat = i" class="d-flex justify-content-between" >
+                        <div v-for="(contact, i) in contacts" :class="getClass(i)">
+                            <div @click="currentChat = i" class="d-flex">
                                 <div class="col-2 d-flex justify-content-center align-items-center p-1">
                                     <img :src="contact.avatar" :alt="contact.name" class="rounded-5">
                                 </div>

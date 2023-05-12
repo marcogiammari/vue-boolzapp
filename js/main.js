@@ -156,7 +156,7 @@ createApp({
                 {
                     name: 'Davide',
                     avatar: './img/avatar_8.jpg',
-                    visible: false,
+                    visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -180,6 +180,9 @@ createApp({
         };
     },
     methods: {
+        getClass(i) {
+            return this.contacts[i].visible ? "d-flex" : "d-none"
+        },
         writeMsg() {
             const msgDate = DateTime.now()
             console.log(msgDate);

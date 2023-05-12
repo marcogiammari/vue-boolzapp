@@ -107,14 +107,24 @@ input:focus {
     max-height: 5rem;
     background-color: #fff;
     border-top: 1px solid lightgray;
-}
-#left-contacts > div:hover {
-    background-color: #d2dbdb;
+    display: flex;
+    flex-direction: column;
 }
 
-#left-contacts small,
+#left-contacts > div:hover {
+    background-color: #eeeeee;
+}
+
+#left-contacts small {
+    color: #757575;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 60%;
+    text-overflow: ellipsis;
+}
+
 #chat-wrapper small {
-    color: #b1b1b1;
+    color: #757575;
 }
 /* <-- right-container --> */
 
