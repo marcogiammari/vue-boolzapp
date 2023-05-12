@@ -32,9 +32,8 @@ div, section {
     height: 100vh;
 }
 
-#my-container {
-    margin: 1.5rem 12rem;
-    max-height: 90%;
+#app {
+    padding: 1.5rem 12rem;
 }
 
 /* <-- left-container --> */
@@ -105,6 +104,9 @@ div, section {
     background-color: #fff;
     border-top: 1px solid lightgray;
 }
+#left-contacts > div:hover {
+    background-color: #d2dbdb;
+}
 
 #left-contacts small {
     color: #b1b1b1;
@@ -122,12 +124,24 @@ div, section {
 }
 
 #chat-wrapper > div {
-    width: 20rem;
-    height: 4.5rem;
+    height: auto;
+    padding: 1.5rem;
+    width: fit-content;
+    max-width: 16rem;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 1.5rem;
 }
 
-.my-bg-green {
+.sent {
     background-color: var(--lightgreen);
+    align-self: flex-end;
+}
+
+.received {
+    background-color: #fff;
 }
 
 #right-message {

@@ -56,8 +56,8 @@
                         </div>
                     </section>
                     <section id="left-contacts" class="overflow-y-auto bg-white">
-                        <div v-for="contact in contacts" class="d-flex flex-column">
-                            <div class="d-flex justify-content-between">
+                        <div v-for="(contact, i) in contacts" class="d-flex flex-column">
+                            <div @click="currentChat = i" class="d-flex justify-content-between">
                                 <div class="col-2 d-flex justify-content-center align-items-center p-1">
                                     <img :src="contact.avatar" :alt="contact.name" class="rounded-5">
                                 </div>
@@ -67,6 +67,7 @@
                                     <small>{{contact.messages[contact.messages.length-1].message}}</small>
                                 </div>
                                 <div class="col-1">
+                                    <!-- USARE LA LIBRERIA QUI -->
                                     <small>{{contact.messages[contact.messages.length-1].date.slice(10,16)}}</small>
                                 </div>
                             </div>
@@ -78,8 +79,8 @@
                 <div id="right-cont" class="d-flex flex-column justify-content-between bg-light-subtle">
                     <section id="right-user" class="d-flex justify-content-between align-items-center p-2">
                         <div class="d-flex align-items-center">
-                            <img class="rounded-5" src="img/avatar_1.jpg" alt="">
-                            <span class="px-1">Michele</span> 
+                            <img class="rounded-5" :src="contacts[currentChat].avatar" alt="">
+                            <span class="px-1">{{contacts[currentChat].name}}</span> 
                         </div>
                         <div class="d-flex align-items-center me-3">
                             <i class="fa-solid fa-magnifying-glass fs-3"></i>
@@ -87,11 +88,11 @@
                             <i class="fa-solid fa-ellipsis-vertical fs-3"></i> 
                         </div>
                     </section>
-                    <section id="right-chat" class="py-2 px-4">
+                    <section id="right-chat" class="overflow-y-auto py-2 px-4">
                         <div id="chat-wrapper" class="d-flex flex-column gap-3 my-5 mx-5">
-                            <div class="d-flex align-items-center rounded-4 align-self-end my-bg-green px-4">Hai portato a spasso il cane?</div>
-                            <div class="d-flex align-items-center rounded-4 align-self-end my-bg-green px-4">Hai portato a spasso il cane?</div>
-                            <div class="d-flex align-items-center rounded-4 bg-white px-4">Hai portato a spasso il cane?</div>
+                            <div v-for="msg in contacts[currentChat].messages" :class="msg.status">
+                                {{msg.message}}
+                            </div>
                         </div>
                     </section>
                     <section id="right-message" class="d-flex justify-content-between">
