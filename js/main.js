@@ -200,8 +200,8 @@ createApp({
         searchContacts() {
             this.contacts.forEach(e => {
                 let toCheck = e.name.toLowerCase()
-                this.inputSearch = this.inputSearch.toLowerCase()
-                toCheck.includes(this.inputSearch) ? e.visible = true : e.visible = false;
+                toCheck = toCheck.slice(0,this.inputSearch.length)
+                toCheck == this.inputSearch.toLowerCase() ? e.visible = true : e.visible = false;
             })
         }
     }
