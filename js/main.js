@@ -7,6 +7,7 @@ createApp({
     data() {
         return {
             currentChat: 0,
+            inputSearch: "",
             inputMsg: {
                 date: "",
                 message: "",
@@ -155,7 +156,7 @@ createApp({
                 {
                     name: 'Davide',
                     avatar: './img/avatar_8.jpg',
-                    visible: true,
+                    visible: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -195,6 +196,13 @@ createApp({
             this.contacts[this.currentChat].messages.push(newMsg);
             setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 1*1000)
             this.inputMsg.message = ""
+        },
+        searchContacts() {
+            this.contacts.forEach(e => {
+                let toCheck = e.name.toLowerCase()
+                this.inputSearch = this.inputSearch.toLowerCase()
+                toCheck.includes(this.inputSearch) ? e.visible = true : e.visible = false;
+            })
         }
-    },
+    }
 }).mount("#app");
