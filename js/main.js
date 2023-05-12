@@ -1,9 +1,17 @@
+var DateTime = luxon.DateTime;
+console.log(DateTime.now())
+
 const { createApp } = Vue;
 
 createApp({
     data() {
         return {
             currentChat: 0,
+            inputMsg: {
+                date: "",
+                message: "",
+                status: "sent"
+            },
             contacts: [
                 {
                     name: 'Michele',
@@ -170,5 +178,23 @@ createApp({
             
         };
     },
-    methods: {},
+    methods: {
+        writeMsg() {
+            const msgDate = DateTime.now()
+            console.log(msgDate);
+            let newMsg = {
+                date: "",
+                message: this.inputMsg.message,
+                status: "sent",
+            };
+            let newAnswer = {
+                date: "",
+                message: "Ok",
+                status: "received"
+            }
+            this.contacts[this.currentChat].messages.push(newMsg);
+            setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 1*1000)
+            this.inputMsg.message = ""
+        }
+    },
 }).mount("#app");

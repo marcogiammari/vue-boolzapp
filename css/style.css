@@ -27,6 +27,10 @@ div, section {
     height: 100%;
 }
 
+input:focus {
+    all: unset;
+}
+
 #my-body {
     background: no-repeat linear-gradient(#009688 20%, #d2dbdb 20% 80%);
     height: 100vh;
@@ -108,7 +112,8 @@ div, section {
     background-color: #d2dbdb;
 }
 
-#left-contacts small {
+#left-contacts small,
+#chat-wrapper small {
     color: #b1b1b1;
 }
 /* <-- right-container --> */
@@ -125,14 +130,23 @@ div, section {
 
 #chat-wrapper > div {
     height: auto;
-    padding: 1.5rem;
     width: fit-content;
     max-width: 16rem;
-    word-break: break-all;
+    word-break: break-word;
     display: flex;
     align-items: center;
     border-radius: 1rem;
-    padding: 1.5rem;
+    padding: .5rem;
+}
+
+#chat-wrapper span {
+    padding: 1rem;
+}
+
+#chat-wrapper small {
+    text-align: right;
+    align-self: flex-end;
+    word-break: normal;
 }
 
 .sent {
