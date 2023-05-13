@@ -200,6 +200,20 @@ createApp({
             setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 1*1000)
             this.inputMsg.message = ""
         },
+        getLastMsg(i) {
+            if (this.contacts[i].messages.length > 0) {
+              return this.contacts[i].messages.at(-1).message  
+            } 
+        },
+        getLastDate(i) {
+            if (this.contacts[i].messages.length > 0) {
+              return this.contacts[i].messages.at(-1).date.slice(10,16)  
+            } 
+        },
+        deleteMsg(i) {
+            this.contacts[this.currentChat].messages.splice(i, 1);
+            console.log(this.contacts[this.currentChat].messages)
+        },
         searchContacts() {
             this.contacts.forEach(e => {
                 let toCheck = e.name.toLowerCase()

@@ -28,6 +28,8 @@
         <div id="app" class="">
 
             <div id="my-container" class="d-flex">
+
+                <!-- left container -->
                 <div id="left-cont" class="d-flex flex-column">
                     <section id="left-user" class="d-flex justify-content-between align-items-center p-2">
                         <div class="d-flex align-items-center">
@@ -56,25 +58,27 @@
                         </div>
                     </section>
                     <section id="left-contacts" class="overflow-y-auto bg-white">
-                        <div v-for="(contact, i) in contacts" :class="getClass(i)">
-                            <div @click="currentChat = i" class="d-flex">
-                                <div class="col-2 d-flex justify-content-center align-items-center p-1">
+                        <div v-for="(contact, i) in contacts" @click="currentChat = i" :class="getClass(i)">
+                            
+                                <div class="d-flex justify-content-center align-items-center p-1">
                                     <img :src="contact.avatar" :alt="contact.name" class="rounded-5">
                                 </div>
-                                <div class="col-9 p-2 d-flex flex-column">
+                                <div class="w-100 p-2 d-flex flex-column">
                                     {{contact.name}}
-                                    <small>{{contact.messages[contact.messages.length-1].message}}</small>
+                                    <small class="">{{getLastMsg(i)}}</small>
                                 </div>
-                                <div class="col-1">
+                                <div class="">
                                     <!-- USARE LA LIBRERIA QUI -->
-                                    <small>{{contact.messages[contact.messages.length-1].date.slice(10,16)}}</small>
+                                    <small>{{getLastDate(i)}}</small>
                                 </div>
-                            </div>
+                            
                             
                         </div>
                     </section>
 
                 </div>
+
+                <!-- right container -->
                 <div id="right-cont" class="d-flex flex-column justify-content-between bg-light-subtle">
                     <section id="right-user" class="d-flex justify-content-between align-items-center p-2">
                         <div class="d-flex align-items-center">
@@ -89,10 +93,19 @@
                     </section>
                     <section id="right-chat" class="overflow-y-auto py-2 px-4">
                         <div id="chat-wrapper" class="d-flex flex-column gap-3 my-5 mx-5">
-                            <div v-for="msg in contacts[currentChat].messages" :class="msg.status">
+                            <div v-for="msg, i in contacts[currentChat].messages" :class="msg.status">        
                                 <span>{{msg.message}}</span>
                                 <!-- USARE LA LIBRERIA QUI -->
-                                <small>{{msg.date.slice(10,16)}}</small>
+                                <small>{{msg.date.slice(10,16)}}</small>                     
+                                
+                                <div class="h-auto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li class="dropdown-item d-flex justify-content-between align-items-center">Rispondi</li>
+                                        <li class="dropdown-item d-flex justify-content-between align-items-center">Copia</li>
+                                        <li @click="deleteMsg(i)" class="dropdown-item d-flex justify-content-between align-items-center text-danger">Elimina <i class="fa-solid fa-trash"></i></li>
+                                    </ul>
+                                </div>
+                                    
                             </div>
                         </div>
                     </section>
@@ -108,6 +121,7 @@
                         </div>
                     </section>
                 </div>
+                
 
                 
             </div>
