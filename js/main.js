@@ -5,6 +5,9 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            emojis: [
+                '😀', '😁', '😂', '😃', '😄', '😅'
+            ],
             currentChat: 0,
             inputSearch: "",
             inputMsg: {
@@ -199,6 +202,9 @@ createApp({
             setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 1000)
             setTimeout(() => x.scrollTo(0, x.scrollHeight), 1010)
             this.inputMsg.message = ""
+        },
+        chooseEmoji(i) {
+            this.inputMsg.message += this.emojis[i]
         },
         getLastMsg(i) {
             if (this.contacts[i].messages.length > 0) {

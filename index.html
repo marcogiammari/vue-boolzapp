@@ -108,7 +108,12 @@
                         </div>
                     </section>
                     <section id="right-message" class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center h-auto dropup me-2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="dropdown-menu p-2 h-auto">
+                                <span class="emoji" v-for="(emoji, i) in emojis" @click="chooseEmoji(i)" >
+                                    {{emoji}}
+                                </span>
+                            </div>
                             <i class="fa-regular fa-face-smile fs-3 mx-5"></i>
                         </div>
                         <div id="message-bar" class="d-flex align-items-center bg-white w-100 rounded-2 px-3 my-2">

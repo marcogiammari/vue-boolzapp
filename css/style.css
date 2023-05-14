@@ -190,6 +190,10 @@ input:focus {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.emoji {
+    cursor: pointer;
+}
+
 
 /* SCROLLBAR */
 /* width */
