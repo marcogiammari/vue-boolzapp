@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="">
                                     <!-- USARE LA LIBRERIA QUI -->
-                                    <small>{{getLastDate(i)}}</small>
+                                    <small>{{contact.messages.length > 0 ? getTimeDiff(contact.messages.at(-1).date) : null}}</small>
                                 </div>
                             
                             
@@ -92,13 +92,11 @@
                         </div>
                     </section>
                     <section id="right-chat" class="overflow-y-auto py-2 px-4">
-                        <div id="chat-wrapper" class="d-flex flex-column gap-3 my-5 mx-5">
-                            <div v-for="msg, i in contacts[currentChat].messages" :class="msg.status">        
+                        <div id="chat-wrapper" class="overflow-y-auto d-flex flex-column gap-3 p-3">
+                            <div v-for="(msg, i) in contacts[currentChat].messages" :class="msg.status">      
                                 <span>{{msg.message}}</span>
-                                <!-- USARE LA LIBRERIA QUI -->
-                                <small>{{msg.date.slice(10,16)}}</small>                     
-                                
-                                <div class="h-auto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <small>{{(getTimeDiff(msg.date))}}</small>                            
+                                <div class="h-auto dropdown-toggle me-2" data-bs-toggle="dropdown" aria-expanded="false">
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li class="dropdown-item d-flex justify-content-between align-items-center">Rispondi</li>
                                         <li class="dropdown-item d-flex justify-content-between align-items-center">Copia</li>
