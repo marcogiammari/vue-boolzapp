@@ -23,6 +23,11 @@ div, section {
     height: 100%;
 }
 
+i, 
+a {
+    cursor: pointer;
+}
+
 input:focus {
     all: unset;
 }
@@ -106,7 +111,7 @@ input:focus {
     border-left: 1px solid #d2dbdb;
 }
 
-#right-user #user-wrapper {
+.my-pointer {
     cursor: pointer;
 }
 
@@ -200,8 +205,6 @@ input:focus {
 
 .emoji {
     cursor: pointer;
-    font-weight: 200px;
-    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 
