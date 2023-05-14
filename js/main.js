@@ -22,17 +22,17 @@ createApp({
                     visible: true,
                     messages: [
                         {
-                            date: '10/05/2023 15:30:55',
+                            date: '10/05/2023 15:00:55',
                             message: 'Hai portato a spasso il cane?',
                             status: 'sent'
                         },
                         {
-                            date: '10/05/2023 15:50:00',
+                            date: '10/05/2023 15:04:00',
                             message: 'Ricordati di stendere i panni',
                             status: 'sent'
                         },
                         {
-                            date: '10/05/2023 16:15:22',
+                            date: '10/05/2023 06:15:22',
                             message: 'Tutto fatto!',
                             status: 'received'
                         }
@@ -187,12 +187,12 @@ createApp({
         },
         writeMsg() {
             let newMsg = {
-                date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss').toLocaleString({ month: '2-digits', hour: '2-digits', minute: '2-digits'}),
+                date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss').toLocaleString({ month: '2-digit', hour: '2-digit', minute: '2-digit'}),
                 message: this.inputMsg.message,
                 status: "sent",
             };
             let newAnswer = {
-                date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss').toLocaleString({ month: '2-digits', hour: '2-digits', minute: '2-digits'}),
+                date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss').toLocaleString({ month: '2-digit', hour: '2-digit', minute: '2-digit'}),
                 message: "Ok",
                 status: "received"
             }
@@ -215,15 +215,14 @@ createApp({
             if (date) {
                 const d = date.split(" ")
                 d[0] = d[0].split("/").reverse().join("-")
-                console.log(d);
-                const luxonDate = DateTime.fromISO(d[0] + "T" + d[1] + "+02:00");
+                let luxonDate = DateTime.fromISO(d[0] + "T" + d[1] + "+02:00");
+                let time = luxonDate.toLocaleString({ hour: '2-digit', minute: '2-digit'}); 
                 const diff = DateTime.now().diff((luxonDate), 'days').days
-                console.log("Diff:" + diff, "LuxonDate:" + luxonDate);
                 let howLongAgo = DateTime.now().minus({ days: diff }).toRelativeCalendar()
                 if (howLongAgo != "oggi") {
                     return howLongAgo
                 }
-                return `${luxonDate.hour}:${luxonDate.minute}`
+                return time
             }
         },
         deleteMsg(i) {
