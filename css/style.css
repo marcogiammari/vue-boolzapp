@@ -106,6 +106,14 @@ input:focus {
     border-left: 1px solid #d2dbdb;
 }
 
+#right-user #user-wrapper {
+    cursor: pointer;
+}
+
+#right-user #user-wrapper:hover {
+    box-shadow: 0 0 2px gray;
+}
+
 #right-chat {
     background-image: url(../img/mine.jpg);
     background-size: contain;
@@ -206,4 +214,8 @@ input:focus {
 ::-webkit-scrollbar-thumb {
     background: rgb(175, 175, 175); 
     border-radius: 2px;
+}
+
+.my-modal-header {
+    height: 10rem;
 }

@@ -6,7 +6,7 @@ createApp({
     data() {
         return {
             emojis: [
-                '😀', '😁', '😂', '😃', '😄', '😅'
+                '\u{1F47D}', '\u{1F625}', '\u{1F60E}', '\u{1F970}', '\u{1F923}', '\u{1F947}', '\u{2708}', '\u{1F63C}', '\u{1F47F}', '\u{1F44C}', '\u{1F44D}', '\u{1F44E}'
             ],
             currentChat: 0,
             inputSearch: "",
@@ -182,10 +182,10 @@ createApp({
         };
     },
     methods: {
-        getClass(i) {
+        getDisplayValue(i) {
             return this.contacts[i].visible ? "d-flex" : "d-none"
         },
-        writeMsg() {
+        writeNewMsg() {
             let newMsg = {
                 date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss').toLocaleString({ month: '2-digit', hour: '2-digit', minute: '2-digit'}),
                 message: this.inputMsg.message,
@@ -193,7 +193,7 @@ createApp({
             };
             let newAnswer = {
                 date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss').toLocaleString({ month: '2-digit', hour: '2-digit', minute: '2-digit'}),
-                message: "Ok",
+                message: this.emojis[Math.floor(Math.random() * this.emojis.length)],
                 status: "received"
             }
             this.contacts[this.currentChat].messages.push(newMsg);
@@ -204,7 +204,8 @@ createApp({
             this.inputMsg.message = ""
         },
         chooseEmoji(i) {
-            this.inputMsg.message += this.emojis[i]
+            this.inputMsg.message += this.emojis[i];
+            document.getElementById("input-bar").focus();
         },
         getLastMsg(i) {
             if (this.contacts[i].messages.length > 0) {

@@ -58,7 +58,7 @@
                         </div>
                     </section>
                     <section id="left-contacts" class="overflow-y-auto bg-white">
-                        <div v-for="(contact, i) in contacts" @click="currentChat = i" :class="getClass(i)">
+                        <div v-for="(contact, i) in contacts" @click="currentChat = i" :class="getDisplayValue(i)">
                             
                                 <div class="d-flex justify-content-center align-items-center p-1">
                                     <img :src="contact.avatar" :alt="contact.name" class="rounded-5">
@@ -81,7 +81,26 @@
                 <!-- right container -->
                 <div id="right-cont" class="d-flex flex-column justify-content-between bg-light-subtle">
                     <section id="right-user" class="d-flex justify-content-between align-items-center p-2">
-                        <div class="d-flex align-items-center">
+                        <div id="user-wrapper" class="d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div class="modal fade h-auto" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header my-modal-header gap-3 ps-4">
+                                        <img class="img-fluid rounded-circle" :src="contacts[currentChat].avatar" alt="">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{contacts[currentChat].name}}</h1>
+                                        <button type="button" class="btn-close align-self-start" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body px-5">
+                                      <h6 class="text-secondary">Bio:</h3>
+                                      <p>{{this.emojis[Math.floor(Math.random() * this.emojis.length)]}}</p>
+                                      <h6 class="text-secondary">Numero di telefono:</h3>
+                                      <p>33{{Math.floor(Math.random()*1000000)}}</p>
+                                      <h6 class="text-secondary">Ultimo messaggio:</h3>
+                                      <p class="fst-italic">{{getLastMsg(currentChat)}}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             <img class="rounded-5" :src="contacts[currentChat].avatar" alt="">
                             <span class="px-1">{{contacts[currentChat].name}}</span> 
                         </div>
@@ -117,7 +136,7 @@
                             <i class="fa-regular fa-face-smile fs-3 mx-5"></i>
                         </div>
                         <div id="message-bar" class="d-flex align-items-center bg-white w-100 rounded-2 px-3 my-2">
-                           <input v-model="inputMsg.message" type="text" placeholder="Scrivi un messaggio" @keyup.enter="writeMsg"> 
+                           <input id="input-bar" v-model="inputMsg.message" type="text" placeholder="Scrivi un messaggio" @keyup.enter="writeNewMsg"> 
                         </div>
                         <div class="d-flex align-items-center">
                             <i class="fa-solid fa-microphone fs-3 mx-5"></i>
