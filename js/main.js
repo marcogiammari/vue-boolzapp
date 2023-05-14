@@ -6,7 +6,7 @@ createApp({
     data() {
         return {
             emojis: [
-                '\u{1F47D}', '\u{1F625}', '\u{1F60E}', '\u{1F970}', '\u{1F923}', '\u{1F947}', '\u{2708}', '\u{1F63C}', '\u{1F47F}', '\u{1F44C}', '\u{1F44D}', '\u{1F44E}'
+                
             ],
             currentChat: 0,
             inputSearch: "",
@@ -240,6 +240,16 @@ createApp({
                 toCheck == this.inputSearch.toLowerCase() ? e.visible = true : e.visible = false;
             })
         }
+    },
+    mounted() {
+        const emojiRange = [128513, 128579];
+        for (let i = emojiRange[0]; i < emojiRange[1]; i++) {
+            const emoticon = String.fromCodePoint(i)
+            this.emojis.push(emoticon);
+        }
     }
 }).mount("#app");
+
+
+
 
