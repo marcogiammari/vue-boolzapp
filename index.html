@@ -91,8 +91,8 @@
                             <i class="fa-solid fa-ellipsis-vertical fs-3"></i> 
                         </div>
                     </section>
-                    <section id="right-chat" class="overflow-y-auto py-2 px-4">
-                        <div id="chat-wrapper" class="overflow-y-auto d-flex flex-column gap-3 p-3">
+                    <section id="right-chat" class="py-2 px-4">
+                        <div id="chat-wrapper" class="d-flex flex-column gap-3 p-3">
                             <div v-for="(msg, i) in contacts[currentChat].messages" :class="msg.status">      
                                 <span>{{msg.message}}</span>
                                 <small>{{(getTimeDiff(msg.date))}}</small>                            

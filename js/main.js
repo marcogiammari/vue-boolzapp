@@ -194,7 +194,10 @@ createApp({
                 status: "received"
             }
             this.contacts[this.currentChat].messages.push(newMsg);
+            x = document.getElementById("chat-wrapper")
+            setTimeout(() => x.scrollTo(0, x.scrollHeight), 10)
             setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 1000)
+            setTimeout(() => x.scrollTo(0, x.scrollHeight), 1010)
             this.inputMsg.message = ""
         },
         getLastMsg(i) {
