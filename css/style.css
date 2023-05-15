@@ -207,19 +207,19 @@ input:focus {
     cursor: pointer;
 }
 
+/* scrollbar */
 
-/* SCROLLBAR */
-/* width */
 ::-webkit-scrollbar {
     display: block;
     width: .5rem;
 }
    
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgb(175, 175, 175); 
     border-radius: 2px;
 }
+
+/* modal */
 
 .my-modal-header {
     height: 10rem;
