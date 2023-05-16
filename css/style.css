@@ -28,6 +28,10 @@ a {
     cursor: pointer;
 }
 
+mark {
+    padding: 0 !important;
+}
+
 input:focus {
     all: unset;
 }
@@ -196,7 +200,8 @@ input:focus {
 }
 
 #left-searchbar input,
-#message-bar input {
+#message-bar input,
+#user-wrapper input {
     width: 100%;
     border: none;
     color: gray;

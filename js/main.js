@@ -12,6 +12,8 @@ createApp({
             // variabile contatore per la chat attiva
             currentChat: 0,
             // variabili di appoggio per l'input di ricerca contatti e di nuovo messaggio
+            inputVisible: false,
+            inputSearchChat: "",
             inputSearch: "",
             inputMsg: {
                 date: "",
@@ -190,6 +192,7 @@ createApp({
             return this.contacts[i].visible ? "d-flex" : "d-none"
         },
         writeNewMsg() {
+            // scrive un nuovo messaggio in chat (se passa il check sul contenuto in html)
             // oggetto messaggio inviato dall'utente
             let newMsg = {
                 // prende data e orario attuali e li formatta in due cifre
@@ -262,7 +265,24 @@ createApp({
                 toCheck = toCheck.slice(0,this.inputSearch.length)
                 toCheck == this.inputSearch.toLowerCase() ? e.visible = true : e.visible = false;
             })
-        }
+        },
+        showSearchBar() {
+            this.inputVisible = !this.inputVisible; 
+            document.getElementById('input-search-bar').focus();
+        },
+        filterMsg(msg, query) {
+            return msg.filter((el) => el.toLowerCase().includes(query.toLowerCase()));
+        },
+        findInChat() {
+            const chatMessages = document.querySelectorAll('.chat-msg');
+            for (i = 0; i < chatMessages.length; i++) {
+                    if (this.inputSearchChat.trim() != "") {
+                        chatMessages[i].innerHTML = chatMessages[i].innerText.replace(this.inputSearchChat, `<mark>${this.inputSearchChat}</mark>`);
+                    } else {
+                        chatMessages[i].innerHTML = chatMessages[i].innerText.replace(`<mark>`, "")
+                    }
+                }
+            }
     },
     mounted() {
         // generatore di emoji 

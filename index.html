@@ -110,16 +110,21 @@
                             <span class="px-1 my-pointer">{{contacts[currentChat].name}}</span> 
                         </div>
                         <div class="d-flex align-items-center me-3">
-                            <i class="fa-solid fa-magnifying-glass fs-3"></i>
-                            <i class="fa-solid fa-paperclip fs-3"></i> 
-                            <i class="fa-solid fa-ellipsis-vertical fs-3"></i> 
+                            <div class="d-flex justify-content-center align-items-center" >
+                                <input id="input-search-bar" class="form-control me-2" v-model="inputSearchChat" v-show="inputVisible" @keyup="findInChat" type="text" placeholder="Cerca nella chat...">
+                            </div>
+                            <div @click="showSearchBar" class="d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-magnifying-glass fs-3"></i>
+                            </div>
+                                <i class="fa-solid fa-paperclip fs-3"></i> 
+                                <i class="fa-solid fa-ellipsis-vertical fs-3"></i> 
                         </div>
                     </section>
                     <!-- chat section -->
                     <section id="right-chat" class="py-2 px-4">
                         <div id="chat-wrapper" class="d-flex flex-column gap-3 p-3">
                             <div v-for="(msg, i) in contacts[currentChat].messages" :class="msg.status">      
-                                <span>{{msg.message}}</span>
+                                <span class="chat-msg">{{msg.message}}</span>
                                 <small>{{(getTimeDiff(msg.date))}}</small>    
                                 <!-- chat dropdown -->
                                 <a href="#" class="text-secondary">
@@ -145,7 +150,7 @@
                             <i class="fa-regular fa-face-smile fs-3 mx-5"></i>
                         </div>
                         <div id="message-bar" class="d-flex align-items-center bg-white w-100 rounded-2 px-3 my-2">
-                           <input id="input-bar" v-model="inputMsg.message" type="text" placeholder="Scrivi un messaggio" @keyup.enter="writeNewMsg"> 
+                           <input id="input-bar" v-model="inputMsg.message" type="text" placeholder="Scrivi un messaggio" @keyup.enter="inputMsg.message.trim() == '' ? null : writeNewMsg()"> 
                         </div>
                         <div class="d-flex align-items-center">
                             <i class="fa-solid fa-microphone fs-3 mx-5"></i>
