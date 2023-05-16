@@ -148,7 +148,8 @@ input:focus {
     position: relative;
 }
 
-#chat-wrapper small {
+#chat-wrapper small,
+#right-user small {
     color: #757575;
     font-size: .75rem;
 }

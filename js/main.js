@@ -229,6 +229,19 @@ createApp({
               return this.contacts[i].messages.at(-1).message  
             } 
         },
+        getLastAccess() {
+            // ritorna l'orario o la data dell'ultimo messaggio inviato 
+            let lastAccess = ""
+            if (this.contacts[this.currentChat].messages.length > 0 ) {
+                for (let i = this.contacts[this.currentChat].messages.length-1; i >= 0; i--) {
+                    const msg = this.contacts[this.currentChat].messages[i];
+                    if (msg.status == "sent") {
+                        lastAccess = msg.date
+                        return this.getTimeDiff(lastAccess)
+                    }
+                }     
+            } 
+        },
         getTimeDiff(date) {
             // ritorna il tempo passato dal messaggio tramite la libreria Luxon
             if (date) {
