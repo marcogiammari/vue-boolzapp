@@ -184,6 +184,14 @@ input:focus {
     height: auto;
 }
 
+#message-icons {
+    width: 15%;
+}
+
+#message-icons img {
+    height: 29px;
+}
+
 /* both containers */
 
 #left-cont #left-user,

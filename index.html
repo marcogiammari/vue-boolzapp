@@ -155,8 +155,9 @@
                         <div id="message-bar" class="d-flex align-items-center bg-white w-100 rounded-2 px-3 my-2">
                            <input id="input-bar" v-model="inputMsg.message" type="text" placeholder="Scrivi un messaggio" @keyup.enter="inputMsg.message.trim() == '' ? null : writeNewMsg()"> 
                         </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-microphone fs-3 mx-5"></i>
+                        <div id="message-icons" class="d-flex justify-content-center align-items-center">
+                            <img class="img-fluid" v-if="inputMsg.message" @click="inputMsg.message.trim() == '' ? null : writeNewMsg()" src="img/send.png" alt="">
+                            <i v-else class="fa-solid fa-microphone fs-3"></i>
                         </div>
                     </section>
                 </div>

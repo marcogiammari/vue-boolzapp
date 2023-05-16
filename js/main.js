@@ -212,11 +212,11 @@ createApp({
 
             const chatWrapper = document.getElementById("chat-wrapper")
             // scrolla la scrollbar fino all'altezza del contenitore per far visualizzare il messaggio
-            setTimeout(() => chatWrapper.scrollTo(0, x.scrollHeight), 10)
+            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 10)
             // aggiunge il messaggio di risposta automatica
             setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 1000)
             // scrolla di nuovo
-            setTimeout(() => chatWrapper.scrollTo(0, x.scrollHeight), 1010)
+            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 1010)
 
             // riazzera l'input
             this.inputMsg.message = ""
