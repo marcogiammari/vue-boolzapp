@@ -190,6 +190,7 @@ input:focus {
 
 #message-icons img {
     height: 29px;
+    cursor: pointer;
 }
 
 /* both containers */

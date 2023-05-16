@@ -210,13 +210,16 @@ createApp({
             // aggiunge il messaggio utente all'array bindato e diventa visibile in pagina 
             this.contacts[this.currentChat].messages.push(newMsg);
 
-            const chatWrapper = document.getElementById("chat-wrapper")
+            const chatWrapper = document.getElementById("chat-wrapper");
             // scrolla la scrollbar fino all'altezza del contenitore per far visualizzare il messaggio
-            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 10)
+            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 10);
+            // fa apparire la scritta "sta scrivendo" 
+            setTimeout(() => this.$refs.isWriting.innerText = "Sta scrivendo...", 1000);
+            setTimeout(() => this.$refs.isWriting.innerText = `Ultimo accesso: ${this.getLastAccess()}`, 3000);
             // aggiunge il messaggio di risposta automatica
-            setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 1000)
+            setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 3000);
             // scrolla di nuovo
-            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 1010)
+            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 1010);
 
             // riazzera l'input
             this.inputMsg.message = ""

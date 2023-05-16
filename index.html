@@ -109,7 +109,7 @@
                             <img class="rounded-5 my-pointer" :src="contacts[currentChat].avatar" alt="">
                             <div class="d-flex flex-column justify-content-center px-2">
                                 <span class="my-pointer">{{contacts[currentChat].name}}</span> 
-                                <small>Ultimo accesso: {{getLastAccess()}}</small>
+                                <small ref="isWriting">Ultimo accesso: {{getLastAccess()}}</small>
                             </div>
                         </div>
                         <div v-if="contacts[currentChat].visible" class="d-flex align-items-center me-3">
