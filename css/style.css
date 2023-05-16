@@ -188,7 +188,7 @@ input:focus {
 
 #left-cont #left-user,
 #right-cont #right-user {
-    height: var(--h70);
+    max-height: var(--h70);
     background-color: var(--gray);
     font-weight: 600;
 }

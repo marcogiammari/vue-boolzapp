@@ -267,6 +267,7 @@ createApp({
             // se non ci sono più messaggi viene cancellata anche la chat del contenitore sinistro
             if (this.contacts[this.currentChat].messages.length == 0) {
                 this.contacts[this.currentChat].visible = false;
+                
             }
         },
         searchContacts() {
