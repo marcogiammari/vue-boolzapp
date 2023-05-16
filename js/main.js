@@ -206,15 +206,18 @@ createApp({
                 message: this.emojis[Math.floor(Math.random() * this.emojis.length)],
                 status: "received"
             }
+
             // aggiunge il messaggio utente all'array bindato e diventa visibile in pagina 
             this.contacts[this.currentChat].messages.push(newMsg);
-            x = document.getElementById("chat-wrapper")
+
+            const chatWrapper = document.getElementById("chat-wrapper")
             // scrolla la scrollbar fino all'altezza del contenitore per far visualizzare il messaggio
-            setTimeout(() => x.scrollTo(0, x.scrollHeight), 10)
+            setTimeout(() => chatWrapper.scrollTo(0, x.scrollHeight), 10)
             // aggiunge il messaggio di risposta automatica
             setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 1000)
             // scrolla di nuovo
-            setTimeout(() => x.scrollTo(0, x.scrollHeight), 1010)
+            setTimeout(() => chatWrapper.scrollTo(0, x.scrollHeight), 1010)
+
             // riazzera l'input
             this.inputMsg.message = ""
         },
@@ -248,12 +251,15 @@ createApp({
                 // formattazione delle date originarie 
                 const d = date.split(" ")
                 d[0] = d[0].split("/").reverse().join("-")
+
                 // creazione oggetto data con luxon e formattazione a due cifre
                 let luxonDate = DateTime.fromISO(d[0] + "T" + d[1] + "+02:00");
                 let time = luxonDate.toLocaleString({ hour: '2-digit', minute: '2-digit'}); 
+
                 // calcolo della differenza temporale tra il messaggio e il momento presente
                 const diff = DateTime.now().diff((luxonDate), 'days').days
                 let howLongAgo = DateTime.now().minus({ days: diff }).toRelativeCalendar()
+
                 // se il messaggio è di oggi lasciamo che sia visualizzato l'orario
                 if (howLongAgo != "oggi") {
                     return howLongAgo
@@ -264,6 +270,7 @@ createApp({
         deleteMsg(i) {
             // cancella il messaggio con il metodo slpice e l'indice in argomento
             this.contacts[this.currentChat].messages.splice(i, 1);
+            
             // se non ci sono più messaggi viene cancellata anche la chat del contenitore sinistro
             if (this.contacts[this.currentChat].messages.length == 0) {
                 this.contacts[this.currentChat].visible = false;
@@ -283,9 +290,6 @@ createApp({
         showSearchBar() {
             this.inputVisible = !this.inputVisible; 
             document.getElementById('input-search-bar').focus();
-        },
-        filterMsg(msg, query) {
-            return msg.filter((el) => el.toLowerCase().includes(query.toLowerCase()));
         },
         findInChat() {
             const chatMessages = document.querySelectorAll('.chat-msg');
