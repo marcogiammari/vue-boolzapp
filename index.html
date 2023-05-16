@@ -39,7 +39,31 @@
                         </div>
                         <div class="d-flex align-items-center me-3">
                             <i class="fa-solid fa-circle-notch fs-3"></i> 
-                            <i class="fa-solid fa-message fs-3"></i> 
+                            <div class="d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#newChatModal">
+                                <i class="fa-solid fa-message fs-3"></i>
+                                <div class="modal h-auto" id="newChatModal" aria-labelledby="newChatModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header my-modal-header gap-3 ps-5">
+                                            <h5 class="" id="newChatModalLabel">Inizia una nuova chat</h5>
+                                            <button type="button" class="btn-close align-self-start" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body px-5">
+                                            <form action="#" class="d-flex flex-column gap-3">
+                                                <input v-model="newChatObj.name" class="form-control" type="text" placeholder="Inserisci nome">
+                                                <!-- <input v-model="newChatObj.number" class="form-control" type="text" minlength="9" maxlength="9" placeholder="Inserisci numbero di telefono"> -->
+                                            <!-- <img class="img-fluid rounded-circle" :src="contacts[currentChat].avatar" alt=""> inserisci scelta avatar -->
+                                                 <button class="btn btn-success" @click="newChat" data-bs-dismiss="modal" aria-label="Close">
+                                                    Aggiungi contatto
+                                                 </button>
+                                            </form>
+                                            
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+
+                            </div>
                             <i class="fa-solid fa-ellipsis-vertical fs-3"></i> 
                         </div>
                     </section>
@@ -105,7 +129,7 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                            </div>
                             <img class="rounded-5 my-pointer" :src="contacts[currentChat].avatar" alt="">
                             <div class="d-flex flex-column justify-content-center px-2">
                                 <span class="my-pointer">{{contacts[currentChat].name}}</span> 

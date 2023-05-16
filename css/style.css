@@ -32,10 +32,6 @@ mark {
     padding: 0 !important;
 }
 
-input:focus {
-    all: unset;
-}
-
 #my-body {
     background: no-repeat linear-gradient(#009688 20%, #d2dbdb 20% 80%);
     height: 100vh;
@@ -218,6 +214,10 @@ input:focus {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#message-bar input:focus {
+    all: unset;
+}
+
 .emoji {
     cursor: pointer;
 }
@@ -237,5 +237,5 @@ input:focus {
 /* modal */
 
 .my-modal-header {
-    height: 10rem;
+    height: 6rem;
 }

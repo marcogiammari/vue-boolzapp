@@ -5,6 +5,12 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            newChatObj: {
+                name: '',
+                avatar: './img/avatar_3.jpg',
+                visible: true,
+                messages: []
+            },
             // array generato in mounted
             emojis: [
                 
@@ -297,13 +303,16 @@ createApp({
         findInChat() {
             const chatMessages = document.querySelectorAll('.chat-msg');
             for (i = 0; i < chatMessages.length; i++) {
-                    if (this.inputSearchChat.trim() != "") {
-                        chatMessages[i].innerHTML = chatMessages[i].innerText.replace(this.inputSearchChat, `<mark>${this.inputSearchChat}</mark>`);
-                    } else {
-                        chatMessages[i].innerHTML = chatMessages[i].innerText.replace(`<mark>`, "")
-                    }
+                if (this.inputSearchChat.trim() != "") {
+                    chatMessages[i].innerHTML = chatMessages[i].innerText.replace(this.inputSearchChat, `<mark>${this.inputSearchChat}</mark>`);
+                } else {
+                    chatMessages[i].innerHTML = chatMessages[i].innerText.replace(`<mark>`, "")
                 }
             }
+        },
+        newChat() {
+            this.contacts.unshift(this.newChatObj);
+        }
     },
     mounted() {
         // generatore di emoji 
