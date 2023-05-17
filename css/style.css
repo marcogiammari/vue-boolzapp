@@ -131,6 +131,14 @@ mark {
     scroll-behavior: smooth;
 }
 
+#chat-wrapper > div a {
+    visibility: hidden !important;
+}
+
+#chat-wrapper > div:hover a {
+    visibility: visible !important;
+}
+
 .sent,
 .received {
     height: auto;
@@ -140,18 +148,17 @@ mark {
     display: flex;
     align-items: center;
     border-radius: .5rem;
-    padding: .25rem 0 .5rem;
     position: relative;
+}
+
+#chat-wrapper span {
+    padding: 1rem 1rem 1.5rem;
 }
 
 #chat-wrapper small,
 #right-user small {
     color: #757575;
     font-size: .75rem;
-}
-
-#chat-wrapper span {
-    padding: 1rem;
 }
 
 #chat-wrapper small {

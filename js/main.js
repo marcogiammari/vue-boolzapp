@@ -5,6 +5,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            randomSentence: this.getRandomSentence(),
             newChatObj: {
                 name: '',
                 avatar: './img/avatar_3.jpg',
@@ -197,6 +198,16 @@ createApp({
         getDisplayValue(i) {
             return this.contacts[i].visible ? "d-flex" : "d-none"
         },
+        getRandomSentence() {
+            // API 
+            // prende una frase in latino random generata dal sito boolean
+            axios.get('https://flynn.boolean.careers/exercises/api/random/sentence')
+                .then((response) => {
+                    this.randomSentence = response.data.response
+                    return response.data.response;
+                })
+
+        },
         writeNewMsg() {
             // scrive un nuovo messaggio in chat (se passa il check sul contenuto in html)
             // oggetto messaggio inviato dall'utente
@@ -207,25 +218,27 @@ createApp({
                 status: "sent",
             };
             // oggetto messaggio di risposta automatica con emoji random
+            this.getRandomSentence()
             let newAnswer = {
                 date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss').toLocaleString({ month: '2-digit', hour: '2-digit', minute: '2-digit'}),
-                message: this.emojis[Math.floor(Math.random() * this.emojis.length)],
+                message: this.randomSentence + " " + this.emojis[Math.floor(Math.random() * this.emojis.length)],
                 status: "received"
             }
+            console.log(this.randomSentence);
 
             // aggiunge il messaggio utente all'array bindato e diventa visibile in pagina 
             this.contacts[this.currentChat].messages.push(newMsg);
 
             const chatWrapper = document.getElementById("chat-wrapper");
             // scrolla la scrollbar fino all'altezza del contenitore per far visualizzare il messaggio
-            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 10);
+            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 100);
             // fa apparire la scritta "sta scrivendo" 
             setTimeout(() => this.$refs.isWriting.innerText = "Sta scrivendo...", 1000);
             setTimeout(() => this.$refs.isWriting.innerText = `Ultimo accesso: ${this.getLastAccess()}`, 3000);
             // aggiunge il messaggio di risposta automatica
             setTimeout(() => this.contacts[this.currentChat].messages.push(newAnswer), 3000);
             // scrolla di nuovo
-            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 1010);
+            setTimeout(() => chatWrapper.scrollTo(0, chatWrapper.scrollHeight), 3100);
 
             // riazzera l'input
             this.inputMsg.message = ""
@@ -260,15 +273,15 @@ createApp({
                 // formattazione delle date originarie 
                 const d = date.split(" ")
                 d[0] = d[0].split("/").reverse().join("-")
-
+                
                 // creazione oggetto data con luxon e formattazione a due cifre
                 let luxonDate = DateTime.fromISO(d[0] + "T" + d[1] + "+02:00");
                 let time = luxonDate.toLocaleString({ hour: '2-digit', minute: '2-digit'}); 
-
+                
                 // calcolo della differenza temporale tra il messaggio e il momento presente
                 const diff = DateTime.now().diff((luxonDate), 'days').days
                 let howLongAgo = DateTime.now().minus({ days: diff }).toRelativeCalendar()
-
+                
                 // se il messaggio è di oggi lasciamo che sia visualizzato l'orario
                 if (howLongAgo != "oggi") {
                     return howLongAgo
@@ -297,10 +310,12 @@ createApp({
             })
         },
         showSearchBar() {
+            // mostra la search-bar e sposta su questa il focus
             this.inputVisible = !this.inputVisible; 
             document.getElementById('input-search-bar').focus();
         },
         findInChat() {
+            // evidenzia le corrispondenze al testo cercato nella chat
             const chatMessages = document.querySelectorAll('.chat-msg');
             for (i = 0; i < chatMessages.length; i++) {
                 if (this.inputSearchChat.trim() != "") {
@@ -311,7 +326,9 @@ createApp({
             }
         },
         newChat() {
+            // crea un nuovo contatto e una nuova chat
             this.contacts.unshift(this.newChatObj);
+            this.currentChat = 0;
         }
     },
     mounted() {
